@@ -3,6 +3,7 @@ package com.jpa.assignment.services;
 import com.jpa.assignment.models.User;
 import com.jpa.assignment.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +26,15 @@ public class UserService {
     public String deleteUser(int userId){
         repo.deleteById(userId);
         return "user number " + userId + " successfully deleted";
+    }
+
+    public List<User> getAllUsersQuery(){
+        return repo.findAllUsers();
+    }
+
+    public String insertUserQuery(User user){
+
+        //repo.insertUser(user);
+        return "User successfully added";
     }
 }

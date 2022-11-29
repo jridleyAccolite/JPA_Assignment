@@ -15,6 +15,8 @@ public class UserController {
     @Autowired
     UserService service;
 
+    // using JPA methods
+
     @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getUsers(){
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
@@ -28,5 +30,17 @@ public class UserController {
     @DeleteMapping(value = "/users/delete/{id}")
     public String deleteUser(@PathVariable("id") int id){
         return service.deleteUser(id);
+    }
+
+    // using Query
+
+    @GetMapping(value = "/q/users")
+    public ResponseEntity<List<User>> getUsersQuery(){
+        return new ResponseEntity<>(service.getAllUsersQuery(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/q/users/add")
+    public String insertUserQuery(@RequestBody User user){
+        return service.insertUserQuery(user);
     }
 }
