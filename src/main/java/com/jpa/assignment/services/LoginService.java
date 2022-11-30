@@ -26,4 +26,18 @@ public class LoginService {
         repo.deleteById(loginId);
         return "login number "+ loginId + " successfully deleted";
     }
+
+    public List<LoginDetails> findLoginsQuery(){
+        return repo.findLoginsByQuery();
+    }
+
+    public String insertLoginQuery(LoginDetails login){
+        repo.insertLoginByQuery(login.getId(), login.getPassword(), login.getActive());
+        return "Login successfully added";
+    }
+
+    public String deleteLoginQuery(int id){
+        repo.deleteLoginByQuery(id);
+        return "Login " + id + " deleted";
+    }
 }

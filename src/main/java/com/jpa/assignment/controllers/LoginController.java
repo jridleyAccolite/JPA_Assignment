@@ -29,4 +29,19 @@ public class LoginController {
     public String deleteLogin(@PathVariable("id") int id){
         return service.deleteLogin(id);
     }
+
+    @GetMapping(value = "/q/logins")
+    public ResponseEntity<List<LoginDetails>> findLoginsQuery(){
+        return new ResponseEntity<>(service.findLoginsQuery(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/q/logins/add")
+    public String insertLoginQuery(@RequestBody LoginDetails login){
+        return service.insertLoginQuery(login);
+    }
+
+    @DeleteMapping(value = "/q/logins/delete/{id}")
+    public String deleteLoginQuery(@PathVariable("id") int id){
+        return service.deleteLoginQuery(id);
+    }
 }
