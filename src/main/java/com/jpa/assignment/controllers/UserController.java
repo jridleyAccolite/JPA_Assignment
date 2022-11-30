@@ -45,4 +45,10 @@ public class UserController {
         System.out.println("post called");
         return service.insertUserQuery(userDetails);
     }
+
+    @DeleteMapping(value = "/q/users/delete/{id}")
+    public String deleteUserQuery(@PathVariable("id") int id){
+        return service.deleteUserQuery(id);
+    }
+
 }

@@ -32,17 +32,12 @@ public class UserService {
     }
 
     public String insertUserQuery(UserDetails userDetails){
-        System.out.println("service called");
-        /*Query q = entityManager.createQuery("INSERT INTO User (id, loginId, name, address, contactNo, type) VALUES (?1, ?2, ?3, ?4, ?5, ?6)");
-        q.setParameter(1, user.getId());
-        q.setParameter(2, user.getLoginId());
-        q.setParameter(3, user.getName());
-        q.setParameter(4, user.getAddress());
-        q.setParameter(5, user.getContactNo());
-        q.setParameter(6, user.getType());
-        q.executeUpdate();
-        entityManager.close();*/
         repo.insertUser(userDetails.getId(), userDetails.getLoginId(), userDetails.getName(), userDetails.getAddress(), userDetails.getContactNo(), userDetails.getType());
         return "User successfully added";
+    }
+
+    public String deleteUserQuery(int id){
+        repo.deleteUserQuery(id);
+        return "User " + id + " deleted";
     }
 }

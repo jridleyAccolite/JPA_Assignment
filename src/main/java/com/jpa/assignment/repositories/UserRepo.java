@@ -20,4 +20,9 @@ public interface UserRepo extends CrudRepository<UserDetails, Integer> {
     @Modifying
     @Query(value = "INSERT INTO user_details (id, login_id, name, address, contact_no, type) VALUES (:id, :loginId, :name, :address, :contactNo, :type)", nativeQuery = true)
     void insertUser(@Param("id") int id, @Param("loginId") int loginId, @Param("name") String name, @Param("address") String address, @Param("contactNo") String contactNo, @Param("type") String type);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM UserDetails u WHERE u.id = :id")
+    void deleteUserQuery(@Param("id") int id);
 }
