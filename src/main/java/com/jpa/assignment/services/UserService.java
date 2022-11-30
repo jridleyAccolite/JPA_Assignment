@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public String insertUserQuery(UserDetails userDetails){
-        repo.insertUser(userDetails.getId(), userDetails.getLoginId(), userDetails.getName(), userDetails.getAddress(), userDetails.getContactNo(), userDetails.getType());
+        repo.insertUser(userDetails.getId(), userDetails.getLoginDetails(), userDetails.getName(), userDetails.getAddress(), userDetails.getContactNo(), userDetails.getType());
         return "User successfully added";
     }
 

@@ -7,13 +7,16 @@ import jakarta.persistence.*;
 public class LoginDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
     @Column
     private String password;
     @Column
     private Boolean isActive;
+
+    @OneToOne(mappedBy = "loginDetails")
+    private UserDetails user;
 
     public int getId() {
         return id;

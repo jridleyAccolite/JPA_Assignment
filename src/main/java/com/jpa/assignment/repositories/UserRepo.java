@@ -1,5 +1,6 @@
 package com.jpa.assignment.repositories;
 
+import com.jpa.assignment.models.LoginDetails;
 import com.jpa.assignment.models.UserDetails;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,8 +19,8 @@ public interface UserRepo extends CrudRepository<UserDetails, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO user_details (id, login_id, name, address, contact_no, type) VALUES (:id, :loginId, :name, :address, :contactNo, :type)", nativeQuery = true)
-    void insertUser(@Param("id") int id, @Param("loginId") int loginId, @Param("name") String name, @Param("address") String address, @Param("contactNo") String contactNo, @Param("type") String type);
+    @Query(value = "INSERT INTO user_details (id, login_details, name, address, contact_no, type) VALUES (:id, :login, :name, :address, :contactNo, :type)", nativeQuery = true)
+    void insertUser(@Param("id") int id, @Param("login") LoginDetails login, @Param("name") String name, @Param("address") String address, @Param("contactNo") String contactNo, @Param("type") String type);
 
     @Transactional
     @Modifying

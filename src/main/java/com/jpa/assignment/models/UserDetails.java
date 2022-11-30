@@ -9,8 +9,8 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
-    @Column(name="loginId")
-    private int loginId;
+    /*@Column(name="loginId")
+    private int loginId;*/
     @Column
     private String name;
     @Column
@@ -20,6 +20,15 @@ public class UserDetails {
     @Column
     private String type;
 
+    /**/
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "loginId")
+    private LoginDetails loginDetails;
+
+    public LoginDetails getLoginDetails(){return loginDetails;}
+
+    public void setLoginDetails(LoginDetails login){ this.loginDetails = login; }
+
     public int getId() {
         return id;
     }
@@ -28,13 +37,13 @@ public class UserDetails {
         this.id = id;
     }
 
-    public int getLoginId() {
+    /*public int getLoginId() {
         return loginId;
-    }
+    }*/
 
-    public void setLoginId(int loginId) {
+    /*public void setLoginId(int loginId) {
         this.loginId = loginId;
-    }
+    }*/
 
     public String getName() {
         return name;
