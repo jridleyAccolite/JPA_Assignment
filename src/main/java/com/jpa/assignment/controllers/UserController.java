@@ -1,6 +1,6 @@
 package com.jpa.assignment.controllers;
 
-import com.jpa.assignment.models.User;
+import com.jpa.assignment.models.UserDetails;
 import com.jpa.assignment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +15,17 @@ public class UserController {
     @Autowired
     UserService service;
 
+
     // using JPA methods
 
     @GetMapping(value = "/users")
-    public ResponseEntity<List<User>> getUsers(){
+    public ResponseEntity<List<UserDetails>> getUsers(){
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
     }
 
     @PostMapping(value = "/users/add")
-    public String addUser(@RequestBody User user){
-        return service.addOrUpdateUser(user);
+    public String addUser(@RequestBody UserDetails userDetails){
+        return service.addOrUpdateUser(userDetails);
     }
 
     @DeleteMapping(value = "/users/delete/{id}")
@@ -35,12 +36,13 @@ public class UserController {
     // using Query
 
     @GetMapping(value = "/q/users")
-    public ResponseEntity<List<User>> getUsersQuery(){
+    public ResponseEntity<List<UserDetails>> getUsersQuery(){
         return new ResponseEntity<>(service.getAllUsersQuery(), HttpStatus.OK);
     }
 
     @PostMapping(value = "/q/users/add")
-    public String insertUserQuery(@RequestBody User user){
-        return service.insertUserQuery(user);
+    public String insertUserQuery(@RequestBody UserDetails userDetails){
+        System.out.println("post called");
+        return service.insertUserQuery(userDetails);
     }
 }
