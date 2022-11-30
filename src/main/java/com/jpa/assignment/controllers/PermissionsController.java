@@ -29,4 +29,20 @@ public class PermissionsController {
     public String deletePermission(@PathVariable("id") int id){
         return service.deletePermission(id);
     }
+
+    @GetMapping(value = "/q/permissions")
+    public ResponseEntity<List<UserPermission>> findPermissionsQuery(){
+        return new ResponseEntity<>(service.findPermissionsQuery(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/q/permissions/add")
+    public String insertPermissionQuery(@RequestBody UserPermission permission){
+        return service.insertPermissionQuery(permission);
+    }
+
+    @DeleteMapping(value = "/q/permissions/delete/{id}")
+    public String deletePermissionQuery(@PathVariable("id") int id){
+        return service.deletePermissionQuery(id);
+    }
+
 }
